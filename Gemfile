@@ -10,11 +10,16 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug'
+  gem 'factory_girl_rails'
   gem 'rspec-rails'
 end
 
 group :development do
   gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'web-console', '~> 2.0'
 end
 
+group :test do
+  gem 'capybara'
+end
