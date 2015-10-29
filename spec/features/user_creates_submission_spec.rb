@@ -8,10 +8,10 @@ RSpec.feature 'User Creates Submission' do
     then_i_should_be_required_to_provide_my_name
   end
 
-  scenario 'User required to provide their email' do
-    # as_a_visitor
-    # who_is_viewing_the_application_form
-    # i_should_be_required_to_provide_my_email
+  scenario 'and is required to provide their email' do
+    given_i_am_applying_for_a_job
+    when_i_submit_the_submission_form_without_my_email
+    then_i_should_be_required_to_provide_my_email
   end
 
   scenario 'User required to provide their phone number' do

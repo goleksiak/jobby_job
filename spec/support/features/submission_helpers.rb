@@ -18,10 +18,20 @@ module Features
       click_button 'Submit'
     end
 
+    def when_i_submit_the_submission_form_without_my_email
+      fill_in 'Name', with: 'Greg'
+      fill_in 'Phone number', with: '(843) 513-7341'
+      when_i_submit_the_submission_form
+    end
+
     def when_i_submit_the_submission_form_without_my_name
       fill_in 'Email', with: 'greg.oleksiak@gmail.com'
       fill_in 'Phone number', with: '(843) 513-7341'
       when_i_submit_the_submission_form
+    end
+
+    def then_i_should_be_required_to_provide_my_email
+      expect(page).to have_css('.alert', text: "Email can't be blank")
     end
 
     def then_i_should_be_required_to_provide_my_name
