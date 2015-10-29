@@ -46,6 +46,8 @@ module Features
     end
 
     alias :and_jobs_are_present :given_jobs_are_present
+    alias :and_i_am_viewing_a_job :given_i_am_viewing_a_job
+    alias :then_i_should_be_able_to_edit_the_job :then_i_should_be_able_to_edit_the_jobs
   end
 end
 

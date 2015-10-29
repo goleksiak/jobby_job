@@ -14,19 +14,6 @@ module Features
       fill_in 'session_password', with: password
       click_button 'Sign in'
     end
-
-    def sign_out
-      click_button I18n.t('layouts.application.sign_out')
-    end
-
-    def expect_user_to_be_signed_in
-      visit root_path
-      expect(page).to have_button I18n.t('layouts.application.sign_out')
-    end
-
-    def expect_user_to_be_signed_out
-      expect(page).to have_content I18n.t('layouts.application.sign_in')
-    end
   end
 end
 

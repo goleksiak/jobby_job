@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.feature 'Admin views Job' do
 
-  scenario 'Admin views Job' do
-    # as_an_admin
-    # who_is_viewing a Job
-    # i_should_see_job_details
+  scenario 'and has the ability edit the Jobs' do
+    given_i_am_signed_in_as_an_admin
+    and_i_am_viewing_a_job
+    then_i_should_be_able_to_edit_the_job
   end
 end
