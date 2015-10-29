@@ -18,6 +18,16 @@ module Features
       click_button 'Submit'
     end
 
+    def when_i_submit_the_submission_form_without_my_name
+      fill_in 'Email', with: 'greg.oleksiak@gmail.com'
+      fill_in 'Phone number', with: '(843) 513-7341'
+      when_i_submit_the_submission_form
+    end
+
+    def then_i_should_be_required_to_provide_my_name
+      expect(page).to have_css('.alert', text: "Name can't be blank")
+    end
+
     def then_i_should_see_a_notification_of_success
       expect(page).to have_css('.alert', text: 'Application successfully submitted')
     end
