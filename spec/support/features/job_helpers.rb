@@ -40,6 +40,12 @@ module Features
       then_i_should_see_the_job_description
       then_i_should_see_the_job_title
     end
+
+    def then_i_should_be_able_to_edit_the_jobs
+      expect(page).to have_css('.job a', text: 'Edit')
+    end
+
+    alias :and_jobs_are_present :given_jobs_are_present
   end
 end
 
