@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User Creates Application' do
+RSpec.feature 'User Creates Submission' do
 
   scenario 'User required to provide their name' do
     # as_a_visitor
@@ -20,9 +20,10 @@ RSpec.feature 'User Creates Application' do
     # i_should_be_required_to_provide_my_phone_number
   end
 
-  scenario 'User successfully creates Application' do
-    # as_a_visitor
-    # who_has_successfully_applied_for_a_job
-    # i_should_see_a_notification_of_success
+  scenario 'and is notified of successful submission' do
+    given_i_am_applying_for_a_job
+    and_i_have_filled_out_the_submission_form
+    when_i_submit_the_submission_form
+    then_i_should_see_a_notification_of_success
   end
 end

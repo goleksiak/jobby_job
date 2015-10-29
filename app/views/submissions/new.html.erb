@@ -1,0 +1,9 @@
+<%= form_for @submission do |submission_form| %>
+  <%= submission_form.label :name %>
+  <%= submission_form.text_field :name %>
+  <%= submission_form.label :email %>
+  <%= submission_form.text_field :email %>
+  <%= submission_form.label :phone_number %>
+  <%= submission_form.text_field :phone_number %>
+  <%= submission_form.submit 'Submit' %>
+<% end %>
