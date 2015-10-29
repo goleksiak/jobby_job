@@ -7,4 +7,5 @@
       Description: <%= @job.description %>
     </li>
   </ul>
+  <%= link_to 'Apply', new_submission_path(job_id: @job.id) %>
 </div>

@@ -6,8 +6,18 @@ module Features
       create_list :job, count
     end
 
+    def given_i_am_viewing_a_job
+      given_jobs_are_present
+      when_i_visit_the_jobs_page
+      and_i_click_on_a_job
+    end
+
     def when_i_visit_the_jobs_page
       visit jobs_path
+    end
+
+    def when_i_apply_for_the_job
+      click_link 'Apply'
     end
 
     def and_i_click_on_a_job

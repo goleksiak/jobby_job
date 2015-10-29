@@ -51,6 +51,10 @@ module Features
     def then_i_should_see_a_notification_of_success
       expect(page).to have_css('.alert', text: 'Application successfully submitted')
     end
+
+    def then_i_should_see_the_submission_form
+      expect(page).to have_css('form#new_submission')
+    end
   end
 end
 
