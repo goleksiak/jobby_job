@@ -32,7 +32,9 @@ RSpec.describe SubmissionsController, type: :controller do
 
     context 'success' do
 
-      before { post :create, valid_submission_params }
+      let(:params) { { submission: attributes_for(:submission_with_job) } }
+
+      before { post :create, params }
 
       it 'returns http found' do
         expect(response).to have_http_status(:found)
@@ -45,7 +47,9 @@ RSpec.describe SubmissionsController, type: :controller do
 
     context 'failure' do
 
-      before { post :create, invalid_submission_params }
+      let(:params) { { submission: attributes_for(:submission_with_job).except(:name) } }
+
+      before { post :create, params }
 
       it 'returns http success' do
         expect(response).to have_http_status(:success)
@@ -59,13 +63,5 @@ RSpec.describe SubmissionsController, type: :controller do
         expect(assigns(:submission)).to_not be_persisted
       end
     end
-  end
-
-  def valid_submission_params
-    { submission: attributes_for(:submission_with_job) }
-  end
-
-  def invalid_submission_params
-    { submission: attributes_for(:submission_with_job).except(:name) }
   end
 end
