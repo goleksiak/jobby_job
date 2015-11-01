@@ -39,6 +39,10 @@ module Features
       first('li.job a').click
     end
 
+    def then_i_should_see_a_notification_of_successful_job_creation
+      expect(page).to have_css('.alert', text: 'Job successfully created')
+    end
+
     def then_i_should_be_required_to_provide_the_job_description
       expect(page).to have_css('.alert', text: "Description can't be blank")
     end
