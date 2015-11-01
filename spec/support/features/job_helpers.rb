@@ -12,6 +12,12 @@ module Features
       and_i_click_on_a_job
     end
 
+    def when_i_create_a_job_without_a_description
+      visit new_admin_job_path
+      fill_in 'Title', with: 'New Job title'
+      click_button 'Save'
+    end
+
     def when_i_create_a_job_without_a_title
       visit new_admin_job_path
       fill_in 'Description', with: 'New Job description'
@@ -31,6 +37,10 @@ module Features
 
     def and_i_click_on_a_job
       first('li.job a').click
+    end
+
+    def then_i_should_be_required_to_provide_the_job_description
+      expect(page).to have_css('.alert', text: "Description can't be blank")
     end
 
     def then_i_should_be_required_to_provide_the_job_title
