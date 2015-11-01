@@ -2,6 +2,13 @@ module Features
 
   module UserHelpers
 
+    def given_i_am_a_visitor
+    end
+
+    def then_i_should_be_required_to_authenticate
+      expect(page).to have_content('Sign in')
+    end
+
     def given_i_am_signed_in_as_an_admin
       admin = create :user_admin
 
