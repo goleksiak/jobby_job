@@ -28,3 +28,5 @@ en:
       job:
         create:
           success: 'Job successfully created'
+        update:
+          success: 'Job successfully updated'

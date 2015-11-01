@@ -26,7 +26,9 @@ RSpec.describe Admin::JobsController, type: :controller do
 
     context 'success' do
 
-      before { get :create, valid_job_params }
+      let(:params) { { job: attributes_for(:job) } }
+
+      before { get :create, params }
 
       it 'returns http found' do
         expect(response).to have_http_status(:found)
@@ -39,7 +41,9 @@ RSpec.describe Admin::JobsController, type: :controller do
 
     context 'failure' do
 
-      before { get :create, invalid_job_params }
+      let(:params) { { job: attributes_for(:job).except(:title) } }
+
+      before { get :create, params }
 
       it 'returns http success' do
         expect(response).to have_http_status(:success)
@@ -55,15 +59,38 @@ RSpec.describe Admin::JobsController, type: :controller do
     end
   end
 
-  def invalid_job_params
-    {
-      job: attributes_for(:job).except(:title)
-    }
+  describe 'GET #edit' do
+
+    let(:job) { create :job }
+
+    before { get :edit, id: job.id }
+
+    it 'returns http success' do
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'renders the :edit template' do
+      expect(response).to render_template(:edit)
+    end
   end
 
-  def valid_job_params
-    {
-      job: attributes_for(:job)
-    }
+  describe 'GET #update' do
+
+    let(:job) { create :job }
+
+    context 'success' do
+
+      let(:params) { { id: job.id, job: { title: 'Updated title' } } }
+
+      before { put :update, params }
+
+      it 'returns http found' do
+        expect(response).to have_http_status(:found)
+      end
+
+      it 'should update the Job' do
+        expect(assigns(:job).title).to eq('Updated title')
+      end
+    end
   end
 end

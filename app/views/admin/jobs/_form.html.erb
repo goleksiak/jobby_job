@@ -1,0 +1,7 @@
+<%= form_for [:admin, job] do |job_form| %>
+  <%= job_form.label :title %>
+  <%= job_form.text_field :title %>
+  <%= job_form.label :description %>
+  <%= job_form.text_area :description %>
+  <%= job_form.submit 'Save' %>
+<% end %>

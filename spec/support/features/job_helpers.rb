@@ -12,6 +12,13 @@ module Features
       and_i_click_on_a_job
     end
 
+    def when_i_update_a_job
+      visit edit_admin_job_path(Job.first)
+      fill_in 'Title', with: 'New Job title'
+      fill_in 'Description', with: 'New Job description'
+      click_button 'Save'
+    end
+
     def when_i_create_a_job_without_a_description
       visit new_admin_job_path
       fill_in 'Title', with: 'New Job title'
@@ -37,6 +44,10 @@ module Features
 
     def and_i_click_on_a_job
       first('li.job a').click
+    end
+
+    def then_i_should_see_a_notification_of_successful_job_update
+      expect(page).to have_css('.alert', text: 'Job successfully updated')
     end
 
     def then_i_should_see_a_notification_of_successful_job_creation
