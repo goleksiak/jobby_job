@@ -12,8 +12,17 @@ module Features
       and_i_click_on_a_job
     end
 
-    def when_i_visit_the_jobs_page
-      visit jobs_path
+    def when_i_create_a_job_without_a_title
+      visit new_admin_job_path
+      fill_in 'Description', with: 'New Job description'
+      click_button 'Save'
+    end
+
+    def when_i_create_a_job
+      visit new_admin_job_path
+      fill_in 'Title', with: 'New Job title'
+      fill_in 'Description', with: 'New Job description'
+      click_button 'Save'
     end
 
     def when_i_apply_for_the_job
@@ -22,6 +31,10 @@ module Features
 
     def and_i_click_on_a_job
       first('li.job a').click
+    end
+
+    def then_i_should_be_required_to_provide_the_job_title
+      expect(page).to have_css('.alert', text: "Title can't be blank")
     end
 
     def then_i_should_see_a_list_of_jobs
@@ -46,7 +59,7 @@ module Features
     end
 
     alias :and_jobs_are_present :given_jobs_are_present
-    alias :and_i_am_viewing_a_job :given_i_am_viewing_a_job
+    alias :when_i_view_a_job :given_i_am_viewing_a_job
     alias :then_i_should_be_able_to_edit_the_job :then_i_should_be_able_to_edit_the_jobs
   end
 end

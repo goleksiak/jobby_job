@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :jobs, only: [:edit]
+    resources :jobs, only: [:index, :new, :create, :edit]
   end
 
   resources :submissions, only: [:new, :create]

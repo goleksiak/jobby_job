@@ -3,7 +3,7 @@ module Features
   module PageHelpers
 
     def when_i_visit_the_jobs_page
-      visit root_path
+      visit jobs_path
     end
   end
 end

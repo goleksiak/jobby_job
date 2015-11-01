@@ -24,4 +24,7 @@ en:
     submission:
       create:
         success: 'Application successfully submitted'
-
+    admin:
+      job:
+        create:
+          success: 'Job successfully created'
