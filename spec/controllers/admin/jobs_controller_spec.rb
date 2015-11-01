@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Admin::JobsController, type: :controller do
 
+  before { sign_in }
+
   describe 'GET #index' do
 
     before { get :index }

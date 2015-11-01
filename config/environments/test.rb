@@ -42,4 +42,7 @@ Rails.application.configure do
 
   # Use host in emails
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  # Use Clearace back door
+  config.middleware.use Clearance::BackDoor
 end
