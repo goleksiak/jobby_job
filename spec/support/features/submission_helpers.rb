@@ -36,6 +36,14 @@ module Features
       when_i_submit_the_submission_form
     end
 
+    def and_i_have_uploaded_a_cover_letter
+      attach_file 'submission_cover_letter_attributes_file', File.join(Rails.root, 'spec/fixtures', 'cover_letter.txt')
+    end
+
+    def and_i_have_uploaded_a_resume
+      attach_file 'submission_resume_attributes_file', File.join(Rails.root, 'spec/fixtures', 'resume.txt')
+    end
+
     def then_i_should_be_required_to_provide_my_phone_number
       expect(page).to have_css('.alert', text: "Phone number can't be blank")
     end

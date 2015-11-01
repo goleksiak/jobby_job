@@ -5,5 +5,13 @@
   <%= submission_form.text_field :email %>
   <%= submission_form.label :phone_number %>
   <%= submission_form.text_field :phone_number %>
+  <%= submission_form.fields_for :cover_letter do |cover_letter_form| %>
+    <%= cover_letter_form.label :cover_letter %>
+    <%= cover_letter_form.file_field :file %>
+  <% end %>
+  <%= submission_form.fields_for :resume do |resume_form| %>
+    <%= resume_form.label :resume %>
+    <%= resume_form.file_field :file %>
+  <% end %>
   <%= submission_form.submit 'Submit' %>
 <% end %>

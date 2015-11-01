@@ -32,18 +32,54 @@ RSpec.describe SubmissionsController, type: :controller do
 
     context 'success' do
 
-      let(:params) { { submission: attributes_for(:submission_with_job) } }
+      context 'documents present' do
 
-      before { post :create, params }
+        let(:cover_letter)  { fixture_file_upload 'cover_letter.txt', 'text/plain' }
+        let(:resume)        { fixture_file_upload 'resume.txt', 'text/plain' }
+        let(:params)        {
+                              {
+                                submission:
+                                  attributes_for(:submission_with_job).
+                                    merge(cover_letter_attributes: { file: cover_letter }).
+                                    merge(resume_attributes: { file: resume })
+                              }
+                            }
 
-      it 'returns http found' do
-        expect(response).to have_http_status(:found)
+        before { post :create, params, upload: [cover_letter, resume] }
+
+        it 'returns http found' do
+          expect(response).to have_http_status(:found)
+        end
+
+        it 'should persist a Submission' do
+          expect(assigns(:submission)).to be_persisted
+        end
+
+        it 'should persist a cover letter Document' do
+          expect(assigns(:submission).cover_letter).to be_persisted
+        end
+
+        it 'should persist a resume Document' do
+          expect(assigns(:submission).resume).to be_persisted
+        end
       end
 
-      it 'should persist a Submission' do
-        expect(assigns(:submission)).to be_persisted
+      context 'documents not present' do
+
+        let(:params) { { submission: attributes_for(:submission_with_job) } }
+
+        before { post :create, params }
+
+        it 'returns http found' do
+          expect(response).to have_http_status(:found)
+        end
+
+        it 'should persist a Submission' do
+          expect(assigns(:submission)).to be_persisted
+        end
       end
     end
+
 
     context 'failure' do
 

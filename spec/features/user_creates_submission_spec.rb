@@ -26,4 +26,13 @@ RSpec.feature 'User Creates Submission' do
     when_i_submit_the_submission_form
     then_i_should_see_a_notification_of_success
   end
+
+  scenario 'and uploads cover page and resume' do
+    given_i_am_applying_for_a_job
+    and_i_have_filled_out_the_submission_form
+    and_i_have_uploaded_a_cover_letter
+    and_i_have_uploaded_a_resume
+    when_i_submit_the_submission_form
+    then_i_should_see_a_notification_of_success
+  end
 end

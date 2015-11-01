@@ -3,7 +3,9 @@ class SubmissionsController < ApplicationController
   before_action :find_job, only: [:new]
 
   def new
-    @submission = Submission.new(job: @job)
+    @submission = Submission.new(job: @job,
+                                  cover_letter: Document.new,
+                                  resume: Document.new)
   end
 
   def create
@@ -31,7 +33,12 @@ class SubmissionsController < ApplicationController
   def submission_params
     params.
       require(:submission).
-      permit(:job_id, :name, :email, :phone_number)
+      permit(:job_id,
+              :name,
+              :email,
+              :phone_number,
+              cover_letter_attributes: [:file],
+              resume_attributes: [:file])
   end
 
   def find_job

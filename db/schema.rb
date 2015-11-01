@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029150957) do
+ActiveRecord::Schema.define(version: 20151101193514) do
+
+  create_table "documents", force: :cascade do |t|
+    t.integer  "submission_id"
+    t.text     "location"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.text     "original_filename"
+    t.string   "content_type"
+  end
+
+  add_index "documents", ["submission_id"], name: "index_documents_on_submission_id"
 
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
