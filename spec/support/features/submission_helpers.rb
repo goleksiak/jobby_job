@@ -44,6 +44,10 @@ module Features
       when_i_submit_the_submission_form
     end
 
+    def and_a_submission_with_documents_is_present
+      create :submission_with_job_and_documents
+    end
+
     def and_i_have_uploaded_a_cover_letter
       attach_file 'submission_cover_letter_attributes_file', File.join(Rails.root, 'spec/fixtures', 'cover_letter.txt')
     end
@@ -80,6 +84,11 @@ module Features
       build(:submission).attributes.each do |key, value|
         expect(page).to have_content(value)
       end
+    end
+
+    def then_i_should_be_able_to_view_uploaded_documents
+      expect(page).to have_link('Cover letter', href: %r{s3.amazonaws.com})
+      expect(page).to have_link('Resume', href: %r{s3.amazonaws.com})
     end
   end
 end

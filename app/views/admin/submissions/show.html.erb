@@ -5,4 +5,20 @@
   <dd><%= @submission.email %></dd>
   <dt>Phone number:</dt>
   <dd><%= @submission.phone_number %></dd>
+  <dt>Cover letter:</dt>
+  <dd>
+    <% if @submission.cover_letter %>
+      <%= link_to 'Cover letter', @submission.cover_letter.public_url %>
+    <% else %>
+      None
+    <% end %>
+  </dd>
+  <dt>Resume:</dt>
+  <dd>
+    <% if @submission.resume %>
+      <%= link_to 'Resume', @submission.resume.public_url %>
+    <% else %>
+      None
+    <% end %>
+  </dd>
 </dl>
