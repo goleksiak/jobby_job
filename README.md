@@ -13,7 +13,7 @@ Rename and update .env.example
 
 App has no styling so grab a UI person
 
-Add your favorite Job queueing system 
+Add your favorite Job queueing system
 
 ## Database creation
 Built and tested with sqlite3
@@ -21,6 +21,7 @@ Built and tested with sqlite3
 ## Database initialization
 ```
 bundle exec rake db:create
+bundle exec rake db:seed
 ```
 
 ## How to run the test suite
