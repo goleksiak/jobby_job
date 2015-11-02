@@ -1,22 +1,29 @@
-== README
+# README
 
-* Ruby version
-	* Built and tested with 2.2.3
+## Ruby version
+Built and tested with 2.2.3
 
-* System dependencies
-	* RVM
-	* AWS S3 credentials
+## System dependencies
+RVM
 
-* Configuration
-	* Rename and update .env.example
-	* App has no styling so grab a UI person
-	* Add your favorite Job queueing system 
+AWS S3 credentials
 
-* Database creation
-	* Built and tested with sqlite3
+## Configuration
+Rename and update .env.example
 
-* Database initialization
-	* bundle exec rake db:create
+App has no styling so grab a UI person
 
-* How to run the test suite
-	* spring rspec
+Add your favorite Job queueing system 
+
+## Database creation
+Built and tested with sqlite3
+
+## Database initialization
+```
+bundle exec rake db:create
+```
+
+## How to run the test suite
+```
+spring rspec
+```
