@@ -18,6 +18,10 @@ module Features
       fill_in 'Phone number', with: '(843) 513-7341'
     end
 
+    def when_i_view_a_submission
+      visit admin_submission_path(Submission.first)
+    end
+
     def when_i_submit_the_submission_form
       click_button 'Submit'
     end
@@ -70,6 +74,12 @@ module Features
 
     def then_i_should_be_able_to_view_submissions
       expect(page).to have_css('a.submission')
+    end
+
+    def then_i_should_see_submission_information
+      build(:submission).attributes.each do |key, value|
+        expect(page).to have_content(value)
+      end
     end
   end
 end
