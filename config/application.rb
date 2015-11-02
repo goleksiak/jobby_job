@@ -22,5 +22,11 @@ module JobbyJob
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Load files in /lib
+    config.autoload_paths << Rails.root.join('lib')
+
+    # Load files in /lib/document_stores
+    config.autoload_paths << Rails.root.join('lib', 'document_stores')
   end
 end
