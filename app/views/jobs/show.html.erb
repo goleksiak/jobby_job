@@ -1,12 +1,1 @@
-<div class="job">
-  <ul>
-    <li class="title">
-      Title: <%= @job.title %>
-    </li>
-    <li class="description">
-      Description: <%= @job.description %>
-    </li>
-  </ul>
-  <%= link_to 'Apply', new_submission_path(job_id: @job.id) %>
-  <%= link_to 'Edit', edit_admin_job_path(@job) %>
-</div>
+<%= render partial: 'job', locals: { job: @job } %>

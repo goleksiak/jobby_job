@@ -16,11 +16,17 @@ class SubmissionsController < ApplicationController
       redirect_to root_path
     else
       flash_after_error
+      reset_submission_documents
       render :new
     end
   end
 
   private
+
+  def reset_submission_documents
+    @submission.cover_letter  = Document.new
+    @submission.resume        = Document.new
+  end
 
   def flash_after_success
     flash[:success] = I18n.t :success, scope: 'controllers.submission.create'

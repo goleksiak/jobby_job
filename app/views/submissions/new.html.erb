@@ -1,17 +1,22 @@
 <%= form_for @submission do |submission_form| %>
   <%= submission_form.label :name %>
   <%= submission_form.text_field :name %>
+  <br/>
   <%= submission_form.label :email %>
-  <%= submission_form.text_field :email %>
+  <%= submission_form.email_field :email %>
+  <br/>
   <%= submission_form.label :phone_number %>
   <%= submission_form.text_field :phone_number %>
+  <br/>
   <%= submission_form.fields_for :cover_letter do |cover_letter_form| %>
     <%= cover_letter_form.label :cover_letter %>
     <%= cover_letter_form.file_field :file %>
   <% end %>
+  <br/>
   <%= submission_form.fields_for :resume do |resume_form| %>
     <%= resume_form.label :resume %>
     <%= resume_form.file_field :file %>
   <% end %>
+  <br/>
   <%= submission_form.submit 'Submit' %>
 <% end %>

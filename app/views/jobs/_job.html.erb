@@ -1,7 +1,14 @@
-<li class="job">
-  <%= link_to job.title, job_path(job) %>
-  <% if signed_in? && current_user.admin? %>
-    <%= link_to 'Edit', edit_admin_job_path(job) %>
-    <%= link_to "Submissions: #{job.submissions_count}", admin_job_path(job), class: 'submission' %>
-  <% end %>
-</li>
+<ul class="job">
+  <li class="title">
+    Title: <%= job.title %>
+  </li>
+  <li class="description">
+    Description: <%= job.description %>
+  </li>
+</ul>
+<% if signed_in? && current_user.admin? %>
+  <%= link_to 'Edit', edit_admin_job_path(job), class: 'edit' %>
+  <%= link_to "Submissions: #{job.submissions_count}", admin_submissions_path(job_id: job.id), class: 'submission' %>
+<% else %>
+  <%= link_to 'Apply', new_submission_path(job_id: job.id) %>
+<% end %>

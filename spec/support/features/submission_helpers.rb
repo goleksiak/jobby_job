@@ -90,6 +90,10 @@ module Features
       expect(page).to have_link('Cover letter', href: %r{s3.amazonaws.com})
       expect(page).to have_link('Resume', href: %r{s3.amazonaws.com})
     end
+
+    def then_i_should_see_submissions
+      expect(page).to have_css('a.submission')
+    end
   end
 end
 

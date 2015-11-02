@@ -6,10 +6,12 @@ module Features
       create_list :job, count
     end
 
-    def given_i_am_viewing_a_job
-      given_jobs_are_present
-      when_i_visit_the_jobs_page
-      and_i_click_on_a_job
+    def given_a_job_is_present
+      create :job
+    end
+
+    def and_a_job_with_submissions_is_present
+      create :job_with_submissions
     end
 
     def when_i_update_a_job
@@ -39,7 +41,17 @@ module Features
     end
 
     def when_i_apply_for_the_job
+      visit job_path Job.first
       click_link 'Apply'
+    end
+
+    def when_i_view_the_job_submissions
+      visit job_path Job.first
+      first('a.submission').click
+    end
+
+    def when_i_view_the_jobs_list
+      visit jobs_path
     end
 
     def and_i_click_on_a_job
@@ -63,7 +75,7 @@ module Features
     end
 
     def then_i_should_see_a_list_of_jobs
-      expect(page).to have_css('ul.jobs li', count: 3)
+      expect(page).to have_css('ul.job', count: 3)
     end
 
     def then_i_should_see_the_job_description
@@ -80,11 +92,10 @@ module Features
     end
 
     def then_i_should_be_able_to_edit_the_jobs
-      expect(page).to have_css('.job a', text: 'Edit')
+      expect(page).to have_link('Edit')
     end
 
     alias :and_jobs_are_present :given_jobs_are_present
-    alias :when_i_view_a_job :given_i_am_viewing_a_job
     alias :then_i_should_be_able_to_edit_the_job :then_i_should_be_able_to_edit_the_jobs
   end
 end

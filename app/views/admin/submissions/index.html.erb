@@ -1,0 +1,8 @@
+<h1>Submissions</h1>
+<ul>
+  <% @submissions.each do |submission| %>
+    <li>
+      <%= link_to "Submission #{submission.id}", admin_submission_path(submission), class: 'submission' %>
+    </li>
+  <% end %>
+</ul>
