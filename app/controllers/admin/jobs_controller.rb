@@ -2,9 +2,6 @@ class Admin::JobsController < SecureController
 
   before_action :find_job, only: [:edit, :update]
 
-  def index
-  end
-
   def new
     @job = Job.new
   end
@@ -14,7 +11,7 @@ class Admin::JobsController < SecureController
 
     if @job.save
       flash_after_successful_create
-      redirect_to admin_jobs_path
+      redirect_to jobs_path
     else
       flash_after_error
       render :new
@@ -27,7 +24,7 @@ class Admin::JobsController < SecureController
   def update
     if @job.update_attributes job_params
       flash_after_successful_update
-      redirect_to admin_jobs_path
+      redirect_to jobs_path
     else
       flash_after_error
       render :edit

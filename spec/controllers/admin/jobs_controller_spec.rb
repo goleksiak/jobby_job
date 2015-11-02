@@ -4,15 +4,6 @@ RSpec.describe Admin::JobsController, type: :controller do
 
   before { sign_in }
 
-  describe 'GET #index' do
-
-    before { get :index }
-
-    it 'returns http success' do
-      expect(response).to have_http_status(:success)
-    end
-  end
-
   describe 'GET #new' do
 
     before { get :new }

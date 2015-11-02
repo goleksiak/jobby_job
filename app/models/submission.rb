@@ -5,7 +5,7 @@ class Submission < ActiveRecord::Base
     association.has_one :resume
   end
 
-  belongs_to :job
+  belongs_to :job, counter_cache: true
 
   validates :name,
             :email,

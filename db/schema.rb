@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101193514) do
+ActiveRecord::Schema.define(version: 20151102004634) do
 
   create_table "documents", force: :cascade do |t|
     t.integer  "submission_id"
@@ -26,9 +26,10 @@ ActiveRecord::Schema.define(version: 20151101193514) do
 
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.text     "description"
+    t.integer  "submissions_count", default: 0
   end
 
   create_table "submissions", force: :cascade do |t|

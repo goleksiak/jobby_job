@@ -8,6 +8,10 @@ module Features
       visit new_submission_path(job_id: Job.first.id)
     end
 
+    def and_submissions_are_present
+      create_list :submission_with_job, 3
+    end
+
     def and_i_have_filled_out_the_submission_form
       fill_in 'Name', with: 'Greg'
       fill_in 'Email', with: 'greg.oleksiak@gmail.com'
@@ -62,6 +66,10 @@ module Features
 
     def then_i_should_see_the_submission_form
       expect(page).to have_css('form#new_submission')
+    end
+
+    def then_i_should_be_able_to_view_submissions
+      expect(page).to have_css('a.submission')
     end
   end
 end

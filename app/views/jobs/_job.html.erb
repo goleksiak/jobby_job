@@ -1,4 +1,7 @@
 <li class="job">
   <%= link_to job.title, job_path(job) %>
-  <%= link_to 'Edit', edit_admin_job_path(job) %>
+  <% if signed_in? && current_user.admin? %>
+    <%= link_to 'Edit', edit_admin_job_path(job) %>
+    <%= link_to "Submissions: #{job.submissions_count}", admin_job_path(job), class: 'submission' %>
+  <% end %>
 </li>
